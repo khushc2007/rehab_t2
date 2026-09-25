@@ -44,11 +44,11 @@ function Wires({mat}:any){
  },[]);useEffect(()=>()=>g.forEach(x=>x.dispose()),[g])
  return <>{g.map((x,i)=><mesh key={i} geometry={x} material={mat.wire} castShadow/>)}</>}
 const Label=({y,z}:any)=><Text position={[0,y,z]} rotation-x={-Math.PI/2} fontSize={.06} color="#888" anchorX="center" anchorY="middle">RehabGrip</Text>
-export default function HandModel(){
+export default function HandModel({source}:{source?:{current:typeof sensorRef.current}}={}){
  const mat=useMats(),root=useRef<THREE.Group>(null),glow=useRef<THREE.PointLight>(null),splay=useRef<THREE.Group>(null)
  const rots=useRef<any[][]>([[],[],[],[],[]]).current,labs=useRef<any[]>([]).current,sm=useRef({f:[0,0,0,0,0],roll:0,pitch:0,yaw:0,e:0}).current
  useFrame((st,dt)=>{
-  const k=1-Math.pow(1-useHand.getState().sim.speed,Math.min(dt,.1)*60),d=sensorRef.current,L=THREE.MathUtils.lerp
+  const k=1-Math.pow(1-useHand.getState().sim.speed,Math.min(dt,.1)*60),d=(source??sensorRef).current,L=THREE.MathUtils.lerp
   for(let i=0;i<5;i++){sm.f[i]=L(sm.f[i],d.f[i],k)
    const w=(i<4?FING[i]:THUMB).w;w.forEach((x,j)=>{if(rots[i][j])rots[i][j].rotation.x=-sm.f[i]*D*x})
    const el=labs[i];if(el){el.textContent=Math.round(sm.f[i])+'°';el.style.opacity=String(Math.min(1,Math.max(0,(sm.f[i]-5)/10)))}}

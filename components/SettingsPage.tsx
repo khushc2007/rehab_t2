@@ -66,8 +66,8 @@ export default function SettingsPage() {
       onClick={() => setActiveSection(section)}
       className={`w-full flex items-center gap-3 px-5 h-9 rounded-lg transition-colors ${
         activeSection === section
-          ? 'bg-[#161616] text-[#0F6E5E] border-l border-[#0F6E5E]'
-          : 'text-[#555555] hover:text-[#888888]'
+          ? 'bg-[#ffffff] dark:bg-[#161616] text-[#0F6E5E] border-l border-[#0F6E5E]'
+          : 'text-[#6b7280] dark:text-[#555555] hover:text-[#6b7280] dark:text-[#888888]'
       }`}
     >
       <span className="text-sm">{icon}</span>
@@ -76,10 +76,10 @@ export default function SettingsPage() {
   )
 
   return (
-    <div className="h-screen bg-[#0a0a0a] flex">
+    <div className="h-screen bg-[#f8fafc] dark:bg-[#0a0a0a] flex">
       {/* Left Nav */}
-      <div className="w-48 bg-[#111111] border-r border-[#1f1f1f] pt-6 flex-shrink-0 overflow-y-auto">
-        <div className="text-[8px] font-mono uppercase tracking-widest text-[#333333] px-5 mb-4">SETTINGS</div>
+      <div className="w-48 bg-[#ffffff] dark:bg-[#111111] border-r border-[#e5e7eb] dark:border-[#1f1f1f] pt-6 flex-shrink-0 overflow-y-auto">
+        <div className="text-[8px] font-mono uppercase tracking-widest text-[#9ca3af] dark:text-[#333333] px-5 mb-4">SETTINGS</div>
         <div className="flex flex-col gap-1 px-2">
           <NavItem section="device" icon="⚙" label="Device Status" />
           <NavItem section="calibration" icon="📊" label="Calibration History" />
@@ -96,7 +96,7 @@ export default function SettingsPage() {
         {/* Device Status */}
         {activeSection === 'device' && (
           <div>
-            <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#555555] mb-5">DEVICE STATUS</h2>
+            <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#6b7280] dark:text-[#555555] mb-5">DEVICE STATUS</h2>
 
             {/* Status Cards */}
             <div className="grid grid-cols-2 gap-4 mb-6">
@@ -106,39 +106,39 @@ export default function SettingsPage() {
                 { title: 'FIRMWARE', version: 'v2.4.1', time: 'Up to date ✓' },
                 { title: 'SENSORS', status: '✓ All OK', time: 'Flex: 5/5 ✓ EMG: 1/1 ✓' },
               ].map((card, idx) => (
-                <div key={idx} className="bg-[#161616] rounded-xl p-4 border border-[#1f1f1f]">
-                  <div className="text-[8px] font-mono uppercase text-[#555555] mb-2">{card.title}</div>
+                <div key={idx} className="bg-[#ffffff] dark:bg-[#161616] rounded-xl p-4 border border-[#e5e7eb] dark:border-[#1f1f1f]">
+                  <div className="text-[8px] font-mono uppercase text-[#6b7280] dark:text-[#555555] mb-2">{card.title}</div>
                   {card.status && <div className="text-[12px] font-mono text-[#0F6E5E] mb-1">{card.status}</div>}
-                  {card.value && <div className="text-[16px] font-mono text-[#f0f0f0] mb-1">{card.value}</div>}
-                  <div className="text-[9px] font-mono text-[#555555]">{card.time}</div>
+                  {card.value && <div className="text-[16px] font-mono text-[#111827] dark:text-[#f0f0f0] mb-1">{card.value}</div>}
+                  <div className="text-[9px] font-mono text-[#6b7280] dark:text-[#555555]">{card.time}</div>
                 </div>
               ))}
             </div>
 
             {/* Device Info */}
-            <div className="bg-[#161616] rounded-xl p-4 border border-[#1f1f1f]">
+            <div className="bg-[#ffffff] dark:bg-[#161616] rounded-xl p-4 border border-[#e5e7eb] dark:border-[#1f1f1f]">
               {[
                 ['DEVICE ID', 'RG-2024-001234'],
                 ['PAIR CODE', '7FJ9-8KL2'],
                 ['LAST UPDATE', 'Sep 20, 2026'],
                 ['WS ENDPOINT', process.env.NEXT_PUBLIC_WS_URL || 'Not configured'],
               ].map(([label, value]) => (
-                <div key={label} className="flex justify-between border-b border-[#1a1a1a] py-2 text-[10px] font-mono last:border-0">
-                  <span className="text-[#888888]">{label}</span>
-                  <span className="text-[#f0f0f0]">{value}</span>
+                <div key={label} className="flex justify-between border-b border-[#f3f4f6] dark:border-[#1a1a1a] py-2 text-[10px] font-mono last:border-0">
+                  <span className="text-[#6b7280] dark:text-[#888888]">{label}</span>
+                  <span className="text-[#111827] dark:text-[#f0f0f0]">{value}</span>
                 </div>
               ))}
             </div>
 
             {/* Action Buttons */}
             <div className="flex gap-3 mt-4">
-              <button className="px-4 py-2 border border-[#2a2a2a] text-[#555555] text-[9px] font-mono rounded hover:border-[#d9534f] hover:text-[#d9534f] transition-colors">
+              <button className="px-4 py-2 border border-[#e5e7eb] dark:border-[#2a2a2a] text-[#6b7280] dark:text-[#555555] text-[9px] font-mono rounded hover:border-[#d9534f] hover:text-[#d9534f] transition-colors">
                 UNPAIR DEVICE
               </button>
-              <button className="px-4 py-2 border border-[#2a2a2a] text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors">
+              <button className="px-4 py-2 border border-[#e5e7eb] dark:border-[#2a2a2a] text-[#6b7280] dark:text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors">
                 CHECK UPDATES
               </button>
-              <button className="px-4 py-2 border border-[#2a2a2a] text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors">
+              <button className="px-4 py-2 border border-[#e5e7eb] dark:border-[#2a2a2a] text-[#6b7280] dark:text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors">
                 SEND DIAGNOSTIC
               </button>
             </div>
@@ -149,18 +149,18 @@ export default function SettingsPage() {
         {activeSection === 'calibration' && (
           <div>
             <div className="flex justify-between items-center mb-5">
-              <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#555555]">CALIBRATION HISTORY</h2>
-              <button className="px-3 py-1.5 bg-[#0F6E5E] text-[#f0f0f0] text-[9px] font-mono rounded hover:bg-[#1a8a78]">
+              <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#6b7280] dark:text-[#555555]">CALIBRATION HISTORY</h2>
+              <button className="px-3 py-1.5 bg-[#0F6E5E] text-[#111827] dark:text-[#f0f0f0] text-[9px] font-mono rounded hover:bg-[#1a8a78]">
                 RECALIBRATE NOW
               </button>
             </div>
 
-            <div className="bg-[#161616] rounded-xl border border-[#1f1f1f] overflow-hidden">
+            <div className="bg-[#ffffff] dark:bg-[#161616] rounded-xl border border-[#e5e7eb] dark:border-[#1f1f1f] overflow-hidden">
               <table className="w-full text-[10px] font-mono">
-                <thead className="bg-[#0d0d0d] border-b border-[#1f1f1f]">
+                <thead className="bg-[#f1f5f9] dark:bg-[#0d0d0d] border-b border-[#e5e7eb] dark:border-[#1f1f1f]">
                   <tr>
                     {['DATE/TIME', 'STATUS', 'ROM RANGE', 'QUALITY'].map(h => (
-                      <th key={h} className="text-[8px] font-mono uppercase text-[#444444] text-left px-4 py-2">
+                      <th key={h} className="text-[8px] font-mono uppercase text-[#9ca3af] dark:text-[#444444] text-left px-4 py-2">
                         {h}
                       </th>
                     ))}
@@ -173,11 +173,11 @@ export default function SettingsPage() {
                     { date: 'Sep 20, 9:00 AM', status: '✓ Complete', rom: '72–78°', quality: 'Good' },
                     { date: 'Sep 18, 3:45 PM', status: '✓ Complete', rom: '70–76°', quality: 'Fair' },
                   ].map((row, idx) => (
-                    <tr key={idx} className={`border-b border-[#1a1a1a] ${idx % 2 === 0 ? 'bg-[#161616]' : 'bg-[#131313]'}`}>
-                      <td className="px-4 py-2 text-[#888888]">{row.date}</td>
+                    <tr key={idx} className={`border-b border-[#f3f4f6] dark:border-[#1a1a1a] ${idx % 2 === 0 ? 'bg-[#ffffff] dark:bg-[#161616]' : 'bg-[#f8fafc] dark:bg-[#131313]'}`}>
+                      <td className="px-4 py-2 text-[#6b7280] dark:text-[#888888]">{row.date}</td>
                       <td className="px-4 py-2 text-[#2ea853]">{row.status}</td>
                       <td className="px-4 py-2 text-[#0F6E5E]">{row.rom}</td>
-                      <td className="px-4 py-2 text-[#f0f0f0]">{row.quality}</td>
+                      <td className="px-4 py-2 text-[#111827] dark:text-[#f0f0f0]">{row.quality}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -189,11 +189,11 @@ export default function SettingsPage() {
         {/* Exercise Library */}
         {activeSection === 'exercises' && (
           <div>
-            <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#555555] mb-5">EXERCISE LIBRARY</h2>
+            <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#6b7280] dark:text-[#555555] mb-5">EXERCISE LIBRARY</h2>
 
             <div className="space-y-2">
               {exercises.map(ex => (
-                <div key={ex.name} className="bg-[#161616] rounded-xl p-4 border border-[#1f1f1f]">
+                <div key={ex.name} className="bg-[#ffffff] dark:bg-[#161616] rounded-xl p-4 border border-[#e5e7eb] dark:border-[#1f1f1f]">
                   <div className="flex items-center gap-3 mb-0">
                     <input
                       type="checkbox"
@@ -203,7 +203,7 @@ export default function SettingsPage() {
                     />
                     <button
                       onClick={() => setExpandedExercise(expandedExercise === ex.name ? null : ex.name)}
-                      className="flex-1 text-left text-[11px] font-mono text-[#f0f0f0] hover:text-[#0F6E5E]"
+                      className="flex-1 text-left text-[11px] font-mono text-[#111827] dark:text-[#f0f0f0] hover:text-[#0F6E5E]"
                     >
                       {ex.name}
                     </button>
@@ -211,7 +211,7 @@ export default function SettingsPage() {
                   </div>
 
                   {expandedExercise === ex.name && (
-                    <div className="mt-3 ml-7 space-y-1 text-[9px] font-mono text-[#555555]">
+                    <div className="mt-3 ml-7 space-y-1 text-[9px] font-mono text-[#6b7280] dark:text-[#555555]">
                       <div>Duration: {ex.duration}</div>
                       <div>Targets: {ex.targets}</div>
                       <div>Difficulty: {'★'.repeat(ex.difficulty)}{'☆'.repeat(5 - ex.difficulty)}</div>
@@ -226,12 +226,12 @@ export default function SettingsPage() {
         {/* Notifications */}
         {activeSection === 'notifications' && (
           <div>
-            <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#555555] mb-5">NOTIFICATIONS</h2>
+            <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#6b7280] dark:text-[#555555] mb-5">NOTIFICATIONS</h2>
 
             <div className="space-y-3 mb-6">
               {reminders.map((reminder, idx) => (
-                <div key={idx} className="flex items-center justify-between py-2 border-b border-[#1a1a1a]">
-                  <span className="text-[10px] font-mono text-[#888888]">{reminder.label}</span>
+                <div key={idx} className="flex items-center justify-between py-2 border-b border-[#f3f4f6] dark:border-[#1a1a1a]">
+                  <span className="text-[10px] font-mono text-[#6b7280] dark:text-[#888888]">{reminder.label}</span>
                   <div
                     className={`w-10 h-6 rounded-full transition-colors cursor-pointer relative ${reminder.enabled ? 'bg-[#0F6E5E]' : 'bg-[#333333]'}`}
                     onClick={() => toggleReminder(idx)}
@@ -242,13 +242,13 @@ export default function SettingsPage() {
               ))}
             </div>
 
-            <div className="bg-[#161616] rounded-xl p-4 border border-[#1f1f1f]">
-              <div className="text-[9px] font-mono text-[#555555] mb-2">DAILY REMINDER AT:</div>
+            <div className="bg-[#ffffff] dark:bg-[#161616] rounded-xl p-4 border border-[#e5e7eb] dark:border-[#1f1f1f]">
+              <div className="text-[9px] font-mono text-[#6b7280] dark:text-[#555555] mb-2">DAILY REMINDER AT:</div>
               <input
                 type="time"
                 value={reminderTime}
                 onChange={e => setReminderTime(e.target.value)}
-                className="bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg px-3 py-1.5 font-mono text-[10px] text-[#f0f0f0] focus:outline-none focus:border-[#0F6E5E]"
+                className="bg-[#f8fafc] dark:bg-[#0a0a0a] border border-[#e5e7eb] dark:border-[#2a2a2a] rounded-lg px-3 py-1.5 font-mono text-[10px] text-[#111827] dark:text-[#f0f0f0] focus:outline-none focus:border-[#0F6E5E]"
               />
             </div>
           </div>
@@ -257,13 +257,13 @@ export default function SettingsPage() {
         {/* Export & Backup */}
         {activeSection === 'export' && (
           <div>
-            <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#555555] mb-5">EXPORT & BACKUP</h2>
+            <h2 className="text-[10px] font-mono uppercase tracking-widest text-[#6b7280] dark:text-[#555555] mb-5">EXPORT & BACKUP</h2>
 
             {/* Storage Bar */}
-            <div className="bg-[#161616] rounded-xl p-4 border border-[#1f1f1f] mb-4">
-              <div className="text-[8px] font-mono text-[#555555] mb-1">LOCAL STORAGE</div>
-              <div className="text-[10px] font-mono text-[#888888] mb-2">234 sessions / 500 max</div>
-              <div className="h-[3px] bg-[#1a1a1a] rounded-full overflow-hidden">
+            <div className="bg-[#ffffff] dark:bg-[#161616] rounded-xl p-4 border border-[#e5e7eb] dark:border-[#1f1f1f] mb-4">
+              <div className="text-[8px] font-mono text-[#6b7280] dark:text-[#555555] mb-1">LOCAL STORAGE</div>
+              <div className="text-[10px] font-mono text-[#6b7280] dark:text-[#888888] mb-2">234 sessions / 500 max</div>
+              <div className="h-[3px] bg-[#f3f4f6] dark:bg-[#1a1a1a] rounded-full overflow-hidden">
                 <div className="h-full bg-[#0F6E5E]" style={{ width: '47%' }} />
               </div>
             </div>
@@ -272,22 +272,22 @@ export default function SettingsPage() {
             <div className="flex flex-col gap-2 mb-4">
               <button
                 onClick={handleExportCSV}
-                className="w-full text-left px-4 py-2 bg-[#161616] border border-[#2a2a2a] text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors"
+                className="w-full text-left px-4 py-2 bg-[#ffffff] dark:bg-[#161616] border border-[#e5e7eb] dark:border-[#2a2a2a] text-[#6b7280] dark:text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors"
               >
                 EXPORT ALL SESSIONS (CSV)
               </button>
               <button
                 onClick={() => window.print()}
-                className="w-full text-left px-4 py-2 bg-[#161616] border border-[#2a2a2a] text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors"
+                className="w-full text-left px-4 py-2 bg-[#ffffff] dark:bg-[#161616] border border-[#e5e7eb] dark:border-[#2a2a2a] text-[#6b7280] dark:text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors"
               >
                 EXPORT PATIENT PROFILE (PDF)
               </button>
-              <button className="w-full text-left px-4 py-2 bg-[#161616] border border-[#2a2a2a] text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors">
+              <button className="w-full text-left px-4 py-2 bg-[#ffffff] dark:bg-[#161616] border border-[#e5e7eb] dark:border-[#2a2a2a] text-[#6b7280] dark:text-[#555555] text-[9px] font-mono rounded hover:border-[#0F6E5E] hover:text-[#0F6E5E] transition-colors">
                 BACKUP CALIBRATION DATA
               </button>
               <button
                 onClick={handleClearData}
-                className="w-full text-left px-4 py-2 bg-[#161616] border border-[#d9534f] border-opacity-30 text-[#d9534f] text-[9px] font-mono rounded hover:border-opacity-100 transition-colors"
+                className="w-full text-left px-4 py-2 bg-[#ffffff] dark:bg-[#161616] border border-[#d9534f] border-opacity-30 text-[#d9534f] text-[9px] font-mono rounded hover:border-opacity-100 transition-colors"
               >
                 CLEAR LOCAL DATA
               </button>
